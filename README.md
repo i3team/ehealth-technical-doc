@@ -49,5 +49,5 @@ Bảng dữ liệu extends từ EHealthTable, mỗi item trong datalist truyền
 Trong class này đã handle sẵn các event onChange của checkbox, nếu có ít nhất 1 item được check thì sẽ hiện lên drawer ở bottom
 ## 6. LineShadow
 Đường ngang thể hiện box shadow
-##7. VerticalDevider
+## 7. VerticalDevider
 Đường dọc để ngăn cách các components với nhau
