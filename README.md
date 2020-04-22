@@ -34,3 +34,20 @@ Cách dùng
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - function: hàm invoke khi nhấn đúng hot key
 - Thông thường hàm this.registerHotKey được gọi ở componentDidMount của Component (hoặc có thể đăng kí bất cứ lúc nào);
 - Mặc định thì các hotKey sẽ được hủy đăng kí tự động khi componentWillUnmount, tuy nhiên vẫn có thể chủ động hủy đăng kí bằng cách gọi this.unregisterHotKey(hotKey, function). Chú ý, function phải cùng pointer với function ở hàm đăng kí.
+
+# Các component UI-kit
+## 1. ButtonGroup
+Sử dụng để render nhiều button nằm cạnh nhau trên một hàng
+## 2. ButtonWithIcon
+Render 1 button có 1 icon và text nằm cạnh bên
+## 3. DevidedComponents
+Render nhiều components với thanh dọc chia giữa các components với nhau
+## 4. EHealthTable
+Bảng dữ liệu có chức năng render thêm checkbox ở mỗi dòng
+## 5. EHealthSelectionTable
+Bảng dữ liệu extends từ EHealthTable, mỗi item trong datalist truyền vô phải có cấu trúc của 1 Selectable (class C#).
+Trong class này đã handle sẵn các event onChange của checkbox, nếu có ít nhất 1 item được check thì sẽ hiện lên drawer ở bottom
+## 6. LineShadow
+Đường ngang thể hiện box shadow
+##7. VerticalDevider
+Đường dọc để ngăn cách các components với nhau
