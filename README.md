@@ -30,8 +30,10 @@ Cách dùng
 ## 4.Phím tắt
 - Để đăng kí được phím tắt thì component đó bắt buộc phải kế thừa từ EHealthBaseConsumer
 - Để đăng kí thì gọi this.registerHotKey(hotKey, function)
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - hotKey: lấy từ enum EHotKey
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - function: hàm invoke khi nhấn đúng hot key
+
 - Thông thường hàm this.registerHotKey được gọi ở componentDidMount của Component (hoặc có thể đăng kí bất cứ lúc nào);
 - Mặc định thì các hotKey sẽ được hủy đăng kí tự động khi componentWillUnmount, tuy nhiên vẫn có thể chủ động hủy đăng kí bằng cách gọi this.unregisterHotKey(hotKey, function). Chú ý, function phải cùng pointer với function ở hàm đăng kí.
 
