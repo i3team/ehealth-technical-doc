@@ -32,6 +32,7 @@ Cách dùng
 - Để đăng kí thì gọi this.registerHotKey(hotKey, function)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - hotKey: lấy từ enum EHotKey
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - function: hàm invoke khi nhấn đúng hot key
 
 - Thông thường hàm this.registerHotKey được gọi ở componentDidMount của Component (hoặc có thể đăng kí bất cứ lúc nào);
