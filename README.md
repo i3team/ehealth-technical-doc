@@ -38,6 +38,34 @@ Cách dùng
 - Thông thường hàm this.registerHotKey được gọi ở componentDidMount của Component (hoặc có thể đăng kí bất cứ lúc nào);
 - Mặc định thì các hotKey sẽ được hủy đăng kí tự động khi componentWillUnmount, tuy nhiên vẫn có thể chủ động hủy đăng kí bằng cách gọi this.unregisterHotKey(hotKey, function). Chú ý, function phải cùng pointer với function ở hàm đăng kí.
 
+## 5. Modal
+- `openModal` có parameter thứ 2 là modal type (xem enum `EModalType`)
+- các component trong modal phải kế thừa `ModalLayout` và implement hàm `modalBody` để render nội dung modal
+- các modal kế thừa `ModalLayout` tắt modal đó bằng cách gọi hàm `this.closeThisModal();`
+- Modal thường được sử dụng để user thực hiện một hành động, thường là nhập một form input gì đó vì vậy việc user nhấn nút X hay đại loại là thoát modal thì phải kiếm tra xem user đã có input gì chưa bằng cách lưu lại data ban đầu, và so sánh với data lúc thoát modal, nếu muốn có behaviour này thì cần:
+    - Override hàm `dataToCompare`, hàm này return về data mà user sẽ thay đổi
+    - Gọi hàm `this.setInitDataToCompare(x)` ở didMount của modal với `x` là data mà user sẽ thay đổi
+    
+    VD:
+    ```jsx
+    export default class CreatePatientModal extends ModalLayout {
+        dataToCompare() {
+            return this.props.data;
+        }
+        componentDidMount() {
+            this.setInitDataToCompare(this.props.data);
+        }
+        modalBody() {
+            const { data, ...others } = this.props;
+            return (
+                <div>
+                    <input value={data.name} onChange={this._onChangeName} />
+                </div>
+            )
+        }
+    }
+    ```
+
 # Các component UI-kit
 ## 1. ButtonGroup
 Sử dụng để render nhiều button nằm cạnh nhau trên một hàng
