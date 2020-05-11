@@ -65,6 +65,13 @@ Cách dùng
         }
     }
     ```
+## 6. Display date
+```jsx
+import helper from '~/general/helper';
+
+let date = helper.displayDate(new Date())
+let dateTime = helper.displayDateTime(new Date())
+```
 
 # Các component UI-kit
 ## 1. ButtonGroup
