@@ -89,3 +89,56 @@ Trong class này đã handle sẵn các event onChange của checkbox, nếu có
 Đường ngang thể hiện box shadow
 ## 7. VerticalDevider
 Đường dọc để ngăn cách các components với nhau
+## 8. Select / Select Async
+- `EhealthSelect` sử dụng để select khi đã có options
+### Props
+Name | Type | Default | Description
+:--- | :--- | :--- | :---
+`renderOption` | function | `option => option.label;` | Render label
+`variant` | "simple" or "complex" | `"complex"` | Đơn giản hay màu mè
+`onChange` | function | | callback function khi change, parameter là list khi `multiple == true`, object khi `multiple == false`
+`search` | boolean | `false` | `true` nếu cần filter options
+`fullWidth` | boolean | `false` | 
+`multiple` | boolean | `false` |
+`label` | string | `"Select"` | Label (placeholder)
+`options` | array | | list of object of {label, value}
+`value` | array or object | | array nếu multiple, ngược lại
+`leftIcon` | node | `null` | icon bênh trái `label`
+`noOptionText` | string | `"No options"` | text display khi không có options
+```jsx
+import EHealthSelect from "~/components/ui-kit/Select/EHealthSelect";
+<EHealthSelect
+	label="Select multiple"
+	options={options}
+	value={options.filter(i => myValues.includes(i.value))}
+	onChange={e => {
+		this.overwiteList(data, e.map(i => i.value));
+	}}
+	multiple
+/>
+```
+
+- `EHealthSelectAsync` sử dụng để select query từ back-end
+### Props
+Bao gồm props của `EHealthSelect` và:
+Name | Type | Default | Description
+:--- | :--- | :--- | :---
+`getValue` | function | | lấy value cho select dựa vào options, xem VD dưới
+`getInit` | boolean | `false` | `true` nếu cần lấy sẵn options 
+`apiUrl`* | string | | api query options từ back-end, được nối vào với searchValue, xem VD dưới
+`extractOptionsFromApi`* | function | | Trích xuất options từ `ack`, xem VD dưới
+
+```jsx
+import EHealthSelectAsync from "~/components/ui-kit/Select/EHealthSelectAsync";
+<EHealthSelectAsync
+    label="Select multiple"
+    apiUrl="/api/Doctor/GetAllergyOptions?searchValue="
+    extractOptionsFromApi={ack => ack.data.items}
+    getValue={options => options.find(i => myValue == i.value)}
+    onChange={e => {
+        this.updateObject(data, {myValue: e.value});
+    }}
+    multiple
+/>
+```
+
