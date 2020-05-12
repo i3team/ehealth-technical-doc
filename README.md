@@ -90,8 +90,8 @@ Trong class này đã handle sẵn các event onChange của checkbox, nếu có
 ## 7. VerticalDevider
 Đường dọc để ngăn cách các components với nhau
 ## 8. Select / Select Async
-- `EhealthSelect` sử dụng để select khi đã có options
-### Props
+### EhealthSelect - sử dụng để select khi đã có options
+#### Props
 Name | Type | Default | Description
 :--- | :--- | :--- | :---
 `renderOption` | function | `option => option.label;` | Render label
@@ -118,8 +118,8 @@ import EHealthSelect from "~/components/ui-kit/Select/EHealthSelect";
 />
 ```
 
-- `EHealthSelectAsync` sử dụng để select query từ back-end
-### Props
+### EHealthSelectAsync - sử dụng để select query từ back-end
+#### Props
 Bao gồm props của `EHealthSelect` và:
 Name | Type | Default | Description
 :--- | :--- | :--- | :---
