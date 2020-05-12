@@ -138,7 +138,6 @@ import EHealthSelectAsync from "~/components/ui-kit/Select/EHealthSelectAsync";
     onChange={e => {
         this.updateObject(data, {myValue: e.value});
     }}
-    multiple
 />
 ```
 
