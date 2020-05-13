@@ -111,8 +111,8 @@ import EHealthSelect from "~/components/ui-kit/Select/EHealthSelect";
 	label="Select multiple"
 	options={options}
 	value={options.filter(i => myValues.includes(i.value))}
-	onChange={e => {
-		this.overwiteList(data, e.map(i => i.value));
+	onChange={selectedOptions => {
+		this.overwiteList(myValues, selectedOptions.map(i => i.value));
 	}}
 	multiple
 />
@@ -135,8 +135,8 @@ import EHealthSelectAsync from "~/components/ui-kit/Select/EHealthSelectAsync";
     apiUrl="/api/Doctor/GetAllergyOptions?searchValue="
     extractOptionsFromApi={ack => ack.data.items}
     getValue={options => options.find(i => myValue == i.value)}
-    onChange={e => {
-        this.updateObject(data, {myValue: e.value});
+    onChange={selectedOption => {
+        this.updateObject(data, {myValue: selectedOption.value});
     }}
 />
 ```
