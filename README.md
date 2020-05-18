@@ -12,7 +12,7 @@ Sử dụng cho các trang mà người dùng sử dụng chính (tham khảo Ho
 - Overwrite `this.title`: Tiêu đề trang
 - Overwrite `this.actionButtons`: biến này để được gán bằng 1 mảng, mỗi phần tử của mảng phải là kết quả của hàm `this.getActionButtonObj(label, icon class, onClickFunc)`
 - Overwrite proto `renderHeader`: hàm này render header
-- Không được kế thừa `componentDidMount`, override hàm `loadData` để get dữ liệu, với parameter của callback function, function này cần được gọi khi đã load data xong, xem VD dưới
+- Không được ghi đè `componentDidMount`, ghi đè hàm `loadData` để get dữ liệu, với parameter của callback function, function này cần được gọi khi đã load data xong, xem VD dưới
 ```jsx
 loadData(finishLoading) {
 	this.ajaxGet({
