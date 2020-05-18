@@ -4,6 +4,8 @@
 - Overwrite proto baseHomeRootDidMount(callback). Hàm này được sử dụng để bắn api lấy danh sách menu về, hàm callback bắt buộc phải được gọi (truyền vào tham số callback của các hàm update state).
 - Overwrite proto getRouteList. Hàm này cần return về list object chứa thông tin các url tồn tại trong root này.
 - Bắt buộc window.renderPage phải render withStyles(x)(Component), trong đó x là object merge giữa baseHomeRootStyles và các style nội bộ.
+
+<a name="page-layout"/>
 ## 2. Component chính cho trang: cần có layout để kế thừa
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 PageLayout: sử dụng cho các trang mà người dùng sử dụng chính (tham khảo HomePage.jsx)
 - Overwrite `this.title`: Tiêu đề trang
