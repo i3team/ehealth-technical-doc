@@ -7,9 +7,8 @@
 
 <a name="page-layout"/>
 
-## 2. Component chính cho trang: cần có layout để kế thừa
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 PageLayout: sử dụng cho các trang mà người dùng sử dụng chính (tham khảo HomePage.jsx)
+## 2. Page Layout
+Sử dụng cho các trang mà người dùng sử dụng chính (tham khảo HomePage.jsx)
 - Overwrite `this.title`: Tiêu đề trang
 - Overwrite `this.actionButtons`: biến này để được gán bằng 1 mảng, mỗi phần tử của mảng phải là kết quả của hàm `this.getActionButtonObj(label, icon class, onClickFunc)`
 - Overwrite proto `renderHeader`: hàm này render header
