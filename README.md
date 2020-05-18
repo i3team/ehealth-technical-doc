@@ -6,9 +6,20 @@
 - Bắt buộc window.renderPage phải render withStyles(x)(Component), trong đó x là object merge giữa baseHomeRootStyles và các style nội bộ.
 ## 2. Component chính cho trang: cần có layout để kế thừa
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 PageLayout: sử dụng cho các trang mà người dùng sử dụng chính (tham khảo HomePage.jsx)
-- Overwrite this.title: Tiêu đề trang
-- Overwrite this.actionButtons: biến này để được gán bằng 1 mảng, mỗi phần tử của mảng phải là kết quả của hàm this.getActionButtonObj(label, icon class, onClickFunc)
-- Overwrite proto renderHeader: hàm này render header
+- Overwrite `this.title`: Tiêu đề trang
+- Overwrite `this.actionButtons`: biến này để được gán bằng 1 mảng, mỗi phần tử của mảng phải là kết quả của hàm `this.getActionButtonObj(label, icon class, onClickFunc)`
+- Overwrite proto `renderHeader`: hàm này render header
+- Không được kế thừa `componentDidMount`, override hàm `loadData` để get dữ liệu, với parameter của callback function, function này cần được gọi khi đã load data xong, xem VD dưới
+```jsx
+loadData(finishLoading) {
+	this.ajaxGet({
+		url: `/apiurl`,
+		success: ack => {
+			this.updateObject(this.props.data, ack.data, finishLoading); // gọi callback
+		}
+	})
+}
+```
 
 ## 3. Validate wrapper
 Được sử dụng khi muốn validate theo actionId truyền vào, trong component này sẽ xử lý, gọi api validate,...
