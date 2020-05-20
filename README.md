@@ -172,7 +172,7 @@ _submit = (e)=> {
 # Backend
 ## 1. Phân trang
 Model sử dụng để phân trang là Pagination (Pagination.cs)
-```cshaph
+```csharh
     public class Pagination
     {
         public int PageIndex { get; set; }
@@ -185,4 +185,40 @@ Model sử dụng để phân trang là Pagination (Pagination.cs)
         public int TotalPage { get; set; }
         public int TotalItem { get; set; }
     }
+```
+## 2. AckWithOptions
+Model sử dụng để lấy kèm options cho việc select
+```csharp
+public class DataWithOptions<T>
+{
+    public Dictionary<EOptionKey, List<Selectable>> OptionDict { get; set; }
+}
+
+public enum EOptionKey : int
+{
+    BloodType = 1,
+    BloodRhType = 2,
+}
+```
+
+Khi get dữ liệu cần lấy thêm options để select, nên sẽ xảy ra việc tạo một model mới để wrap lại, đây là lúc model này "ra tay"
+```csharp
+public Acknowledgement<DataWithOptions<MedicalRecord>> GetMedicalRecord()
+{
+    var ack = new Acknowledgement<DataWithOptions<MedicalRecord>>();
+    ack.Data = new DataWithOptions<MedicalRecord>();
+            
+    // Lấy data bình thường
+    ack.Data.Data = new MedicalRecord();
+
+    // Lấy các list options khác nhau
+    ack.Data.OptionDict = new Dictionary<EOptionKey, List<Selectable>>();
+            
+    // VD: Lấy options cho status của bệnh án
+    var statusOptions = EnumHelper.GetSelectableOptions<EMedicalRecordStatus>();
+    ack.Data.OptionDict.Add(EOptionKey.Status, statusOptions);
+    // Nếu có thêm options khác thì add thêm vào dict
+    ack.IsSuccess = true;
+    return ack;
+}
 ```
