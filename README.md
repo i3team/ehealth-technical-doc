@@ -155,3 +155,29 @@ import EHealthSelectAsync from "~/components/ui-kit/Select/EHealthSelectAsync";
 />
 ```
 
+## Form
+Để sử dụng được chức năng Enter để submit 1 form thì cần bao các component (input, select,...) bằng thẻ <form></form>
+````jsx
+<form onSubmit={this._submit}>
+	<I3TextField ... />
+	<Button type="submit">Tìm</Button> (hoặc <Button onClick={this._submit}>Tìm</Button>)
+</form>
+````
+
+# Backend
+## 1. Phân trang
+Model sử dụng để phân trang là Pagination (Pagination.cs)
+```cshaph
+    public class Pagination
+    {
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+    }
+
+    public class Pagination<T>: Pagination
+    {
+        public List<T> DataList { get; set; }
+        public int TotalPage { get; set; }
+        public int TotalItem { get; set; }
+    }
+```
