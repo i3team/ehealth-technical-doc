@@ -186,7 +186,7 @@ Model sử dụng để phân trang là Pagination (Pagination.cs)
         public int TotalItem { get; set; }
     }
 ```
-## 2. AckWithOptions
+## 2. DataWithOptions
 Model sử dụng để lấy kèm options cho việc select
 ```csharp
 public class DataWithOptions<T>
