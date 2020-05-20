@@ -191,7 +191,7 @@ Model sử dụng để lấy kèm options cho việc select
 ```csharp
 public class DataWithOptions<T>
 {
-    public Dictionary<EOptionKey, List<Selectable>> OptionDict { get; set; }
+    public Dictionary<int, List<Selectable>> OptionDict { get; set; }
 }
 
 public enum EOptionKey : int
@@ -216,9 +216,21 @@ public Acknowledgement<DataWithOptions<MedicalRecord>> GetMedicalRecord()
             
     // VD: Lấy options cho status của bệnh án
     var statusOptions = EnumHelper.GetSelectableOptions<EMedicalRecordStatus>();
-    ack.Data.OptionDict.Add(EOptionKey.Status, statusOptions);
+    ack.Data.OptionDict.Add((int)EOptionKey.Status, statusOptions);
     // Nếu có thêm options khác thì add thêm vào dict
     ack.IsSuccess = true;
     return ack;
 }
+```
+Sử dụng ở front-end React
+```jsx
+// file enum.js
+const EOptionKey = {
+    BloodType: 1,
+    BloodRhType: 2,
+    Status: 3,
+}
+
+// sử dụng
+let statusOptions = ack.data.optionDict[EOptionKey.Status];
 ```
