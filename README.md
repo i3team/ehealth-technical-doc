@@ -213,7 +213,7 @@ public Acknowledgement<DataWithOptions<MedicalRecord>> GetMedicalRecord()
     ack.Data.Data = new MedicalRecord();
 
     // Lấy các list options khác nhau
-    ack.Data.OptionDict = new Dictionary<EOptionKey, List<Selectable>>();
+    ack.Data.OptionDict = new Dictionary<int, List<Selectable>>();
             
     // VD: Lấy options cho status của bệnh án
     var statusOptions = EnumHelper.GetSelectableOptions<EMedicalRecordStatus>();
