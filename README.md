@@ -191,6 +191,7 @@ Model sử dụng để lấy kèm options cho việc select
 ```csharp
 public class DataWithOptions<T>
 {
+    public T Data { get; set; }
     public Dictionary<int, List<Selectable>> OptionDict { get; set; }
 }
 
