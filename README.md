@@ -162,6 +162,11 @@ import EHealthSelectAsync from "~/components/ui-kit/Select/EHealthSelectAsync";
 	<I3TextField ... />
 	<Button type="submit">Tìm</Button> (hoặc <Button onClick={this._submit}>Tìm</Button>)
 </form>
+
+_submit = (e)=> {
+	e.preventDefault(); //ngăn load lại trang
+	//your code here
+}
 ````
 
 # Backend
