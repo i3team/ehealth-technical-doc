@@ -186,10 +186,10 @@ Model sử dụng để phân trang là Pagination (Pagination.cs)
         public int TotalItem { get; set; }
     }
 ```
-## 2. DataWithOptions
+## 2. DataWrapper
 Model sử dụng để lấy kèm options cho việc select
 ```csharp
-public class DataWithOptions<T>
+public class DataWrapper<T>
 {
     public T Data { get; set; }
     public Dictionary<int, List<Selectable>> OptionDict { get; set; }
@@ -201,13 +201,21 @@ public enum EOptionKey : int
     BloodRhType = 2,
 }
 ```
+Ngoài ra cũng có thể có như cầu lấy kèm cả 1 model filter hay search model gì đó
+```csharp
+public class DataWrapper<TData, TFilter> : DataWrapper<TData>
+{
+    public TFilter Filter { get; set; }
+}
+```
+
 
 Khi get dữ liệu cần lấy thêm options để select, nên sẽ xảy ra việc tạo một model mới để wrap lại, đây là lúc model này "ra tay"
 ```csharp
-public Acknowledgement<DataWithOptions<MedicalRecord>> GetMedicalRecord()
+public Acknowledgement<DataWrapper<MedicalRecord>> GetMedicalRecord()
 {
-    var ack = new Acknowledgement<DataWithOptions<MedicalRecord>>();
-    ack.Data = new DataWithOptions<MedicalRecord>();
+    var ack = new Acknowledgement<DataWrapper<MedicalRecord>>();
+    ack.Data = new DataWrapper<MedicalRecord>();
             
     // Lấy data bình thường
     ack.Data.Data = new MedicalRecord();
@@ -222,6 +230,11 @@ public Acknowledgement<DataWithOptions<MedicalRecord>> GetMedicalRecord()
     ack.IsSuccess = true;
     return ack;
 }
+
+// Lấy kèm filter
+public Acknowledgement<DataWrapper<List<MedicalRecord>, RecordPageFilterModel>> GetModelRecordList()
+{
+}
 ```
 Sử dụng ở front-end React
 ```jsx
@@ -233,5 +246,10 @@ const EOptionKey = {
 }
 
 // sử dụng
-let statusOptions = ack.data.optionDict[EOptionKey.Status];
+this.ajaxGet({
+	url: '~/GetMedicalRecord',
+	success: ack => {
+		let statusOptions = ack.data.optionDict[EOptionKey.Status];
+	}
+})
 ```
