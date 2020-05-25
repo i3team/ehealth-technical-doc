@@ -54,7 +54,20 @@ Cách dùng
 
 ## 5. Modal
 - `openModal` có parameter thứ 2 là modal type (xem enum `EModalType`)
-- các component trong modal phải kế thừa `ModalLayout` và implement hàm `modalBody` để render nội dung modal
+```jsx
+let mdf = () => ({
+    title: "Modal title",
+    body: (
+        <Modal props />
+    )
+})
+this.openModal(mdf, ModalType.Right)
+```
+[Để dễ hình dung, xem demo design về modal tại đây](https://xd.adobe.com/view/31ba350f-eda0-49c2-5928-79cef4d01083-478b/screen/984dbfbe-3dcd-4d52-ae14-982365e2e2e1/Right-Modal-)
+
+- các component trong modal phải kế thừa `ModalLayout`
+    - Implement hàm `modalBody` để render nội dung modal
+    - Override hàm `leftFooter` hoặc/và `rightFooter` để render footer theo từng phía (xem demo bên trên)
 - các modal kế thừa `ModalLayout` tắt modal đó bằng cách gọi hàm `this.closeThisModal();`
 - Modal thường được sử dụng để user thực hiện một hành động, thường là nhập một form input gì đó vì vậy việc user nhấn nút X hay đại loại là thoát modal thì phải kiếm tra xem user đã có input gì chưa bằng cách lưu lại data ban đầu, và so sánh với data lúc thoát modal, nếu muốn có behaviour này thì cần:
     - Override hàm `dataToCompare`, hàm này return về data mà user sẽ thay đổi
@@ -69,6 +82,23 @@ Cách dùng
         componentDidMount() {
             this.setInitDataToCompare(this.props.data);
         }
+        // override hàm rightFooter để render nút Lưu ở bên phải
+        rightFooter(){
+            return (
+                <div>
+                    <button>Lưu</button>
+                </div>
+            )
+        }
+        // override hàm rightFooter để render nút Đóng (modal) ở bên trái
+        leftFooter(){
+            return (
+                <div>
+                   Đóng
+                </div>
+            )
+        }
+        // implement body
         modalBody() {
             const { data, ...others } = this.props;
             return (
