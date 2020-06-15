@@ -233,3 +233,6 @@ this.ajaxGet({
 	}
 })
 ```
+
+## 3. Thay đổi tên trường virtual edmx
+Xem và note trong file EHealth.POCO/CustomFields.txt
