@@ -72,6 +72,9 @@ this.openModal(mdf, ModalType.Right)
 - Modal thường được sử dụng để user thực hiện một hành động, thường là nhập một form input gì đó vì vậy việc user nhấn nút X hay đại loại là thoát modal thì phải kiếm tra xem user đã có input gì chưa bằng cách lưu lại data ban đầu, và so sánh với data lúc thoát modal, nếu muốn có behaviour này thì cần:
     - Override hàm `dataToCompare`, hàm này return về data mà user sẽ thay đổi
     - Gọi hàm `this.setInitDataToCompare(x)` ở didMount của modal với `x` là data mà user sẽ thay đổi
+    - Override hàm `closeModalIfClickAway() : boolean`, return `true` nếu muốn tắt modal khi click ra ngoài modal, và ngược lại
+    - Override hàm `onClose()` nếu `closeModalIfClickAway` return `true`, hàm được gọi sau khi tắt modal
+    - Override hàm `hasDefaultPadding() : boolean`, return `true` nếu có default padding (giá trị này trước đó được truyền dưới dạng parameter ở hàm `openModal`)
     
     VD:
     ```jsx
@@ -90,6 +93,16 @@ this.openModal(mdf, ModalType.Right)
                 </div>
             )
         }
+    	closeModalIfClickAway() {
+		return true;
+	}
+    	hasDefaultPadding() {
+		return true;
+    	}
+	onClose(){
+		console.log('modal closed, do what u want');
+	}
+	
         // override hàm rightFooter để render nút Đóng (modal) ở bên trái
         leftFooter(){
             return (
