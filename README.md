@@ -73,6 +73,7 @@ this.openModal(mdf, ModalType.Right)
     - Override hàm `dataToCompare`, hàm này return về data mà user sẽ thay đổi
     - Gọi hàm `this.setInitDataToCompare(x)` ở didMount của modal với `x` là data mà user sẽ thay đổi
     - Override hàm `closeModalIfClickAway() : boolean`, return `true` nếu muốn tắt modal khi click ra ngoài modal, và ngược lại
+    - Override hàm `closeModalIfPressEscape() : boolean`, return `true` nếu muốn tắt modal khi nhấn nút ESC, và ngược lại, mặc định hàm này `return this.closeModalIfClickAway();`
     - Override hàm `onClose()` nếu `closeModalIfClickAway` return `true`, hàm được gọi sau khi tắt modal
     - Override hàm `hasDefaultPadding() : boolean`, return `true` nếu có default padding (giá trị này trước đó được truyền dưới dạng parameter ở hàm `openModal`)
     
