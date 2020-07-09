@@ -53,7 +53,7 @@ Cách dùng
 - Mặc định thì các hotKey sẽ được hủy đăng kí tự động khi componentWillUnmount, tuy nhiên vẫn có thể chủ động hủy đăng kí bằng cách gọi this.unregisterHotKey(hotKey, function). Chú ý, function phải cùng pointer với function ở hàm đăng kí.
 
 ## 5. Modal
-- `openModal` có parameter thứ 2 là modal type (xem enum `EModalType`)
+- `openModal(modalFunction, type = EModalType.Full) : number`
 ```jsx
 let mdf = () => ({
     title: "Modal title",
