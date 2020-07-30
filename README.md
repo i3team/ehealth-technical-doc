@@ -131,6 +131,17 @@ let date = helper.displayDate(new Date())
 let dateTime = helper.displayDateTime(new Date())
 ```
 
+## 7. Sử dụng font weight cho I3Component
+`I3Component` (hay `I3Div`,...) nhận vào một prop là `fontWeight`, prop này là `string` ĐƯỢC ĐẶT TÊN BỞI THIẾT KẾ
+VD:
+<div>
+    <img src="./font-weight-guide.png" width="300px" />
+</div>
+
+
+
+
+
 # Các component UI-kit
 ## 1. ButtonGroup
 Sử dụng để render nhiều button nằm cạnh nhau trên một hàng
