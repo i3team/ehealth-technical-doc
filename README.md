@@ -133,6 +133,7 @@ let dateTime = helper.displayDateTime(new Date())
 
 ## 7. Font weight
 `I3Component` (hay `I3Div`,...) nhận vào một prop là `fontWeight`, prop này là `string` ĐƯỢC ĐẶT TÊN BỞI THIẾT KẾ
+
 VD:
 <div>
     <img src="./font-weight-guide.png" width="300px" />
