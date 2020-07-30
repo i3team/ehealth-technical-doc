@@ -136,7 +136,7 @@ let dateTime = helper.displayDateTime(new Date())
 
 VD:
 <div>
-    <img src="./font-weight-guide.png" width="300px" />
+    <img src="./font-weight-guide.png" width="600px" />
 </div>
 
 Mỗi dự án sẽ có một danh sách các font weight khác nhau, vì vậy tên các font weight sẽ được lưu vào một object `FontWeight`, cách dùng như sau
