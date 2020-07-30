@@ -138,7 +138,27 @@ VD:
     <img src="./font-weight-guide.png" width="300px" />
 </div>
 
+Mỗi dự án sẽ có một danh sách các font weight khác nhau, vì vậy tên các font weight sẽ được lưu vào một object `FontWeight`, cách dùng như sau
 
+```jsx
+import { FontWeight } from '~/src/themeStyles/Color';
+<I3Div fontWeight={FontWeight.bold}>
+	text
+</I3Div>
+```
+`FontWeight` có cấu trúc như sau
+```jsx
+export const FontWeight = {
+    extraLight: "extra-light",
+    light: "light",
+    regular: "regular",
+    medium: "medium",
+    semibold: "semibold",
+    bold: "bold",
+    extrabold: "extra-bold",
+    black: "black",
+}
+```
 
 
 
