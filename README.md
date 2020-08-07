@@ -161,6 +161,40 @@ export const FontWeight = {
 }
 ```
 
+## 8. Drawer (ehealth)
+#### Cách dùng
+```jsx
+this.openDrawer(drawerFunction, drawerTitle, muiDrawerProps);
+```
+#### DrawerLayout
+`body` của drawer cần kế thừa `DrawerLayout` vài implement các phương thức
+- `drawerBody() : node` : body của drawer
+- `renderButtons() : node` : render buttons (hay cái gì đó nằm bên phải header)
+```
+class TestDrawer extends DrawerLayout {
+	renderButtons() {
+		return (
+			<Fragment>
+				<EHealthButton margin="sm">
+					Chuyển khoa
+				</EHealthButton>
+				<EHealthButton margin="sm" variant="outlined">
+					Xuất viện
+				</EHealthButton>
+				<EHealthIconButton margin="sm" iconClassName="fal fa-edit" />
+			</Fragment>
+		)
+	}
+	drawerBody() {
+		return (
+			<div style={{ padding: '1rem' }}>
+				body
+			</div>
+		)
+	}
+}
+```
+
 
 
 # Các component UI-kit
