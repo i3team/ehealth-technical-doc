@@ -170,7 +170,7 @@ this.openDrawer(drawerFunction, drawerTitle, muiDrawerProps);
 `body` của drawer cần kế thừa `DrawerLayout` vài implement các phương thức
 - `drawerBody() : node` : body của drawer
 - `renderButtons() : node` : render buttons (hay cái gì đó nằm bên phải header)
-```
+```jsx
 class TestDrawer extends DrawerLayout {
 	renderButtons() {
 		return (
