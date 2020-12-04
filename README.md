@@ -316,3 +316,9 @@ this.ajaxGet({
 
 ## 3. Thay đổi tên trường virtual edmx
 Xem và note trong file EHealth.POCO/CustomFields.txt
+
+
+# API
+## 1. Gửi tin nhắn /api/Chat/SendChatMessageToUser [POST]
+
+
